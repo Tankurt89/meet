@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+## General App Information
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+It will be built using the TDD technique.
+The app will have access to the Google Calendar API an OAuth2.
+It will feature serverless functions (AWS) for the authorization server instead of traditional servers.
+Will be compatible with the most common web browsers, and all screen sizes.
+App will also function offline or in slow network conditions.
 
-## Available Scripts
+## Key Features
 
-In the project directory, you can run:
+1. Filter Events by City
 
-### `npm start`
+Story
+-As a User, I should be able to Filter Events by City, so that I can see what is going on in the city that I am currently in or will be traveling to.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Scenario:
+-Given the user has opened the app, when they have not searched for a city, then the user should see a list of all upcoming events
+-Given the user is on the main page of the app, when the user starts typing in the city search bar the user then should see a list of cities that match what they've typed.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Show/Hide Event Details
+   Story
+   -As a User, I should be able to show and hide the details of events so I can choose which events to get more information on based on what I have interest in
 
-### `npm test`
+Scenarios:
+-Given the user has selected a city browse it's events. When the user receives that list of events from the city then all the event details should be hidden by default.
+-Given the user decides on an event they are interested in, when the user selects that event element, then it should expand and give details on the event.
+-Given the user has looked over the information and is done looking at it, when the user clicks on the event element again, the the element should collapse and hide all the details.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Specify Number of Events
+   Story
+   -As a User, I should be able to specify the number of events so that I can have control of how many events I see.
 
-### `npm run build`
+Scenarios:
+-Given the user has just opened the app, when the default list is displayed, then the number of events will be limited to the default number set by the app.
+-Given the user user would like to see a different amount of events, when they choose how many events they would like displayed then change the number of events from default to what the user had selected.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Use the App When Offline
+   Story
+   -As a User, I should be able to use the app while offline so that I can access all of the information for the event no matter where I am.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Scenarios:
+-Given the user is in a rural area without internet connection, when they would like to access information on the event(s) they are interested in, then display the cached data for the user but inform them that they are offline.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Add an App Shortcut to the Home Screen
+   Story
+   -As a User, I should be able to add a shortcut to the app on my home screen so that I can quickly access the app and the information that I need.
 
-### `npm run eject`
+Scenarios:
+-Given the user would like to have quick access to the app, when they are on their homepage allow them to add a shortcut to the app, then they can quickly and efficiently access the information they need.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+6. Display Charts Visualizing Event Details
+   Story
+   -As a User, I should be able to see charts displaying event details so that I have a better visualization of events in the cities or other important information.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Scenarios:
+-Given the user has selected multiple cities, when they want to compare the amount of events, then they should be displayed a chart representing the cities and the amount of events per city.
