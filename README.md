@@ -55,3 +55,7 @@ Scenarios:
 
 Scenarios:
 -Given the user has selected multiple cities, when they want to compare the amount of events, then they should be displayed a chart representing the cities and the amount of events per city.
+
+## Serverless Functions
+
+This app is going to utilize serverless functions by providing the user real-time data updates on the events they are looking for in the cities they are looking at. It will also help with alleviating the need to maintain a server and handle all the scaling needed as traffic fluctuate on the app.
