@@ -24,7 +24,7 @@ module.exports.getAuthURL = async () =>{
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': true,
     },
-    body: JSON.stringify({authUrl,}),
+    body: JSON.stringify({authUrl}),
   }
 }
 
@@ -58,11 +58,6 @@ module.exports.getAccessToken = async (event) => {
 }
 
 module.exports.getCalendarEvents = async (event) => {
-  const oAuth2Client = new google.auth.OAuth2(
-    client_id,
-    client_secret,
-    redirect_uris[0]
-  );
   const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
   oAuth2Client.setCredentials({ access_token });
 
