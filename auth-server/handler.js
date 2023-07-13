@@ -8,7 +8,7 @@ const redirect_uris = ["https://tankurt89.github.io/meet"]
 const oAuth2Client = new google.auth.OAuth2(
   client_id,
   client_secret,
-  redirect_uris[0]
+  redirect_uris
 )
 
 module.exports.getAuthURL = async () =>{
@@ -87,7 +87,6 @@ module.exports.getCalendarEvents = async (event) => {
         statusCode: 200,
         headers: {
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Credentials': true,
         },
         body: JSON.stringify({ events: results.data.items }),
       };
@@ -96,10 +95,6 @@ module.exports.getCalendarEvents = async (event) => {
       console.error(err);
       return {
         statusCode: 500,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": true,
-        },
         body: JSON.stringify(err),
       };
     });
