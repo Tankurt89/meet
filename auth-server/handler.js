@@ -5,7 +5,8 @@ const { oauth2 } = require("googleapis/build/src/apis/oauth2");
 const calendar = google.calendar("v3")
 const SCOPES = ["https://www.googleapis.com/auth/calendar.events.public.readonly"]
 const { client_secret, client_id, calendar_id } = process.env
-const redirect_uris = ["https://tankurt89.github.io/meet/"]
+const redirect_uris = ["https://tankurt89.github.io/meet"]
+javascript_origins:["https://tankurt89.github.io/meet", "http://localhost:3000"]
 
 const oAuth2Client = new google.auth.OAuth2(
   client_id,
