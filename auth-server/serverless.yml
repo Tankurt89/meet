@@ -10,7 +10,7 @@ provider:
   environment:
     client_id: ${file(config.json):client_id}
     client_secret: ${file(config.json):client_secret}
-    calendar_id: ${file(config.json):calendar_id}
+    CALENDAR_ID: ${file(config.json):CALENDAR_ID}
 
 functions:
   getAuthURL:

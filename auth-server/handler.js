@@ -1,12 +1,9 @@
-'use strict';
-
 const { google } = require("googleapis");
-const { oauth2 } = require("googleapis/build/src/apis/oauth2");
 const calendar = google.calendar("v3")
 const SCOPES = ["https://www.googleapis.com/auth/calendar.events.public.readonly"]
-const { client_secret, client_id, calendar_id } = process.env
+const { client_secret, client_id, CALENDAR_ID } = process.env
 const redirect_uris = ["https://tankurt89.github.io/meet"]
-javascript_origins:["https://tankurt89.github.io/meet", "http://localhost:3000"]
+// javascript_origins = ["https://tankurt89.github.io/meet", "http://localhost:3000"]
 
 const oAuth2Client = new google.auth.OAuth2(
   client_id,
@@ -37,6 +34,7 @@ module.exports.getAccessToken = async (event) => {
       if (error) {
         return reject(error)
       }
+      console.log(code)
       return resolve(response)
     })
   })
@@ -59,13 +57,18 @@ module.exports.getAccessToken = async (event) => {
 }
 
 module.exports.getCalendarEvents = async (event) => {
+  const oAuth2Client = new google.auth.OAuth2(
+    client_id,
+    client_secret,
+    redirect_uris[0]
+  );
   const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
   oAuth2Client.setCredentials({ access_token });
 
   return new Promise((resolve, reject) => {
     calendar.events.list(
       {
-        calendarId: calendar_id,
+        calendarId: CALENDAR_ID,
         auth: oAuth2Client,
         timeMin: new Date().toISOString(),
         singleEvents: true,
@@ -93,6 +96,10 @@ module.exports.getCalendarEvents = async (event) => {
       console.error(err);
       return {
         statusCode: 500,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Credentials": true,
+        },
         body: JSON.stringify(err),
       };
     });
