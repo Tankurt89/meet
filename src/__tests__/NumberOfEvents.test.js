@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import NumberOfEvents from "../components/NumberOfEvents";
 
-describe("<NumberOfEvents /> component", () => {
+describe('<NumberOfEvents /> component', () => {
   test("checks if element has the role of a text box", () => {
     render(<NumberOfEvents eventNumber={32} />);
     const numberTextBox = screen.queryByRole("textbox");

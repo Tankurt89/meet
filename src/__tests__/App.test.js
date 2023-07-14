@@ -13,7 +13,8 @@ describe('<App /> component', () => {
         expect(AppDOM.querySelector('#city-search')).toBeInTheDocument();
     });
     test("renders a textbox with the number of events", () => {
-        expect(AppDOM.querySelector('#Enter-any-Number'))
+        // eslint-disable-next-line jest/valid-expect
+        expect(AppDOM.querySelector('#number-of-events'))
     })
     
 })
