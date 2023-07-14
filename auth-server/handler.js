@@ -63,8 +63,8 @@ module.exports.getCalendarEvents = async (event) => {
     redirect_uris[0]
   );
   const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
-  oAuth2Client.setCredentials({ access_token });
 
+  oAuth2Client.setCredentials({ access_token })
   return new Promise((resolve, reject) => {
     calendar.events.list(
       {
@@ -80,23 +80,24 @@ module.exports.getCalendarEvents = async (event) => {
         } else {
           resolve(response);
         }
-      }
+      },
     )
-    .then((results) => {
-      return {
-        statusCode: 200,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: JSON.stringify({ events: results.data.items }),
-      };
-    })
-    .catch((err) => {
-      console.error(err);
-      return {
-        statusCode: 500,
-        body: JSON.stringify(err),
-      };
-    });
+  })
+  .then((results) => {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({ events: results.data.items }),
+    };
+  })
+  .catch((err) => {
+    console.error(err);
+    return {
+      statusCode: 500,
+      body: JSON.stringify(err),
+    };
   });
-};
+}
+
