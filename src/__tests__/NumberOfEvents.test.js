@@ -25,7 +25,7 @@ describe('<NumberOfEvents /> component', () => {
       />
     );
     const numberTextBox = screen.getByPlaceholderText("Enter any Number");
-    await userEvent.type(numberTextBox, "10");
+    await userEvent.type(numberTextBox, '{backspace}{backspace}10');
     expect(handleEventNumberChange).toHaveBeenCalled();
   });
 });

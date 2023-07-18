@@ -57,8 +57,8 @@ describe('<App /> integration', () => {
     const AppDOM  = AppComponent.container.firstChild
 
     const NumberOfEventsDOM = AppDOM.querySelector('#number-of-events')
-    const NOEinput = within(NumberOfEventsDOM).queryAllByRole('textbox')
-    expect(NOEinput.value).toBe("32")
+    const NOEinput = within(NumberOfEventsDOM).queryAllByRole("textbox")
+    expect(NOEinput.value).toBe(32)
 
     await user.type(NOEinput, "{backspace}{backspace}10")
     const EventListDOM = AppDOM.querySelector("#event-list")
