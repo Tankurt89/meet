@@ -2,6 +2,7 @@ import { render, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { getEvents } from '../api';
 import App from '../App';
+import { NumberOfEvents } from '../components/NumberOfEvents'
 
 describe('<App /> component', () => {
   let AppDOM;
@@ -49,4 +50,19 @@ describe('<App /> integration', () => {
       expect(event.textContent).toContain("Berlin, Germany");
     });
   });
+
+  test('renders a list of events as long as the number entered by the user', async () => {
+    const user = userEvent.setup()
+    const AppComponent = render(<App />)
+    const AppDOM  = AppComponent.container.firstChild
+
+    const NumberOfEventsDOM = AppDOM.querySelector('#number-of-events')
+    const NOEinput = within(NumberOfEventsDOM).queryAllByRole('textbox')
+    expect(NOEinput.value).toBe("32")
+
+    await user.type(NOEinput, "{backspace}{backspace}10")
+    const EventListDOM = AppDOM.querySelector("#event-list")
+    const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem')
+    expect(allRenderedEventItems.length).toBe(Number(NOEinput.value))
+  })
 });
