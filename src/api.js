@@ -15,7 +15,7 @@ export const extractLocations = (events) => {
 };
 
 export const getEvents = async () => {
-  if (window.location.href.startsWith('http://localhost', 'https://tankurt89.github.io')){
+  if (window.location.href.startsWith('http://localhost')){
     return mockData;
   }
 
@@ -24,7 +24,8 @@ export const getEvents = async () => {
   if (token) {
     removeQuery()
     const url = "https://ncssdjauvj.execute-api.us-east-2.amazonaws.com/dev/api/get-events" + "/" + token
-    const result = await fetch(url)
+    const response = await fetch(url)
+    const result = await response.json()
     if (result) {
       return result.events
     } else return null
