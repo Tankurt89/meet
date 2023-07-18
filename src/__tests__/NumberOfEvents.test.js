@@ -9,11 +9,13 @@ describe('<NumberOfEvents /> component', () => {
     expect(numberTextBox).toBeInTheDocument();
     expect(numberTextBox).toHaveClass("textbox");
   });
+
   test("by default, number of events is listed as 32", async () => {
     render(<NumberOfEvents eventNumber={32} />);
     const numberTextBox = screen.getByPlaceholderText("Enter any Number");
     expect(numberTextBox).toHaveValue("32");
   });
+  
   test("user can change number of events they wish to see listed", async () => {
     const handleEventNumberChange = jest.fn();
     render(
