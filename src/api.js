@@ -15,7 +15,7 @@ export const extractLocations = (events) => {
 };
 
 export const getEvents = async () => {
-  if (window.location.href.startsWith('http://localhost', 'https://tankurt89')){
+  if (window.location.href.startsWith('http://localhost', 'https://tankurt89.github.io')){
     return mockData;
   }
 
