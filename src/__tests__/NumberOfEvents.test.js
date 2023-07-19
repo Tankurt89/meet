@@ -3,29 +3,27 @@ import userEvent from "@testing-library/user-event";
 import NumberOfEvents from "../components/NumberOfEvents";
 
 describe('<NumberOfEvents /> component', () => {
-  test("checks if element has the role of a text box", () => {
-    render(<NumberOfEvents eventNumber={32} />);
-    const numberTextBox = screen.queryByRole("textbox");
+  let NumberOfEventsComponents
+    beforeEach(() => {
+      NumberOfEventsComponents = render(<NumberOfEvents setCurrentNOE={() => { }}/>)
+    })
+  test("renders textbox for number of events", () => {
+    const numberTextBox = NumberOfEventsComponents.queryByRole("textbox");
     expect(numberTextBox).toBeInTheDocument();
-    expect(numberTextBox).toHaveClass("textbox");
+    expect(numberTextBox).toHaveClass("number-of-events");
   });
 
   test("by default, number of events is listed as 32", async () => {
-    render(<NumberOfEvents eventNumber={32} />);
-    const numberTextBox = screen.getByPlaceholderText("Enter any Number");
-    expect(numberTextBox).toHaveValue("32");
+    const numberTextBox = NumberOfEventsComponents.queryByRole('textbox')
+    expect(numberTextBox).toHaveValue("32")
   });
   
   test("user can change number of events they wish to see listed", async () => {
-    const handleEventNumberChange = jest.fn();
-    render(
-      <NumberOfEvents
-        eventNumber={32}
-        onEventNumberChange={handleEventNumberChange}
-      />
-    );
-    const numberTextBox = screen.getByPlaceholderText("Enter any Number");
-    await userEvent.type(numberTextBox, '{backspace}{backspace}10');
-    expect(handleEventNumberChange).toHaveBeenCalled();
+      const user = userEvent.setup();
+      const numberTextBox = NumberOfEventsComponents.queryByRole('textbox');
+      await user.type(numberTextBox, "123")
+  
+      // 32 (the default value already written) + 123
+      expect(numberTextBox).toHaveValue("32123");
   });
 });

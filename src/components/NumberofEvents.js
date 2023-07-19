@@ -1,18 +1,24 @@
-import React from "react";
+import { useState } from "react";
 
-const NumberOfEvents = ({ eventNumber, onEventNumberChange }) => {
-  const handleInputChanged = (value) => {
-    onEventNumberChange(value);
+const NumberOfEvents = ({ setCurrentNOE }) => {
+
+  const [number, setNumber] = useState(32)
+
+  const handleInputChanged = (event) => {
+    const value = event.target.value
+    setNumber(value)
+    setCurrentNOE(value)
   };
 
   return (
     <div id="number-of-events">
       <input
         type="text"
-        className="textbox"
+        id="number-of-events"
+        className="number-of-events"
         placeholder="Enter any Number"
-        value={eventNumber}
-        onChange={(e) => handleInputChanged(e.target.value)}
+        value={number}
+        onChange={handleInputChanged}
       />
     </div>
   );

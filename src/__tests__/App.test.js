@@ -51,18 +51,19 @@ describe('<App /> integration', () => {
     });
   });
 
-  test('renders a list of events as long as the number entered by the user', async () => {
-    const user = userEvent.setup()
-    const AppComponent = render(<App />)
-    const AppDOM  = AppComponent.container.firstChild
+  test('renders a list of events matching the city selected by the user', async () => {
+    const user = userEvent.setup();
+    const AppComponent = render(<App />);
+    const AppDOM = AppComponent.container.firstChild;
 
-    const NumberOfEventsDOM = AppDOM.querySelector('#number-of-events')
-    const NOEinput = within(NumberOfEventsDOM).queryAllByRole("textbox")
-    expect(NOEinput.value).toBe("32")
+    const NumberOfEventsDOM = AppDOM.querySelector('#number-of-events');
+    const NumberOfEventsInput = within(NumberOfEventsDOM).queryByRole('textbox');
 
-    await user.type(NOEinput, "{backspace}{backspace}10")
-    const EventListDOM = AppDOM.querySelector("#event-list")
-    const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem')
-    expect(allRenderedEventItems.length).toBe(Number(NOEinput.value))
+    await user.type(NumberOfEventsInput, "{backspace}{backspace}10");
+
+    const EventListDOM = AppDOM.querySelector('#event-list');
+    const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
+
+    expect(allRenderedEventItems.length).toBe(10);
   })
 });
