@@ -29,7 +29,7 @@ export default function App() {
     <div className="App">
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity}/>
       <EventList events={events}/>
-      <NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE}/>
+      <NumberOfEvents setCurrentNOE={setCurrentNOE}/>
     </div>
   );
 }

@@ -16,7 +16,6 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
         type="text"
         id="number-of-events"
         className="number-of-events"
-        placeholder="Enter any Number"
         value={number}
         onChange={handleInputChanged}
       />

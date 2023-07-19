@@ -21,9 +21,8 @@ describe('<NumberOfEvents /> component', () => {
   test("user can change number of events they wish to see listed", async () => {
       const user = userEvent.setup();
       const numberTextBox = NumberOfEventsComponents.queryByRole('textbox');
-      await user.type(numberTextBox, "123")
+      await user.type(numberTextBox, "10")
   
-      // 32 (the default value already written) + 123
-      expect(numberTextBox).toHaveValue("32123");
+      expect(numberTextBox).toHaveValue("3210");
   });
 });
