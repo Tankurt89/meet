@@ -15,6 +15,7 @@ Story
 -As a User, I should be able to Filter Events by City, so that I can see what is going on in the city that I am currently in or will be traveling to.
 
 Scenario:
+-Give the user hasn't searched for a city, show upcoming events from all cities. When the user opens the app.Then the user should see the list of upcoming events
 -Given the user has opened the app, when they have not searched for a city, then the user should see a list of all upcoming events
 -Given the user is on the main page of the app, when the user starts typing in the city search bar the user then should see a list of cities that match what they've typed.
 
