@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://tankurt89.github.io/meet",
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@cucumber/gherkin": "^26.2.0",
     "@cucumber/messages": "^22.0.0",
     "@testing-library/jest-dom": "^5.16.5",
