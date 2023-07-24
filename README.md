@@ -38,7 +38,8 @@ Scenarios:
 
 4. Use the App When Offline
    Story
-   -As a User, I should be able to use the app while offline so that I can access all of the information for the event no matter where I am.
+   -As a User, I should be able to use the app while offline so that I can access all of the information for
+   the event no matter where I am.
 
 Scenarios:
 -Given the user is in a rural area without internet connection, when they would like to access information on the event(s) they are interested in, then display the cached data for the user but inform them that they are offline.
