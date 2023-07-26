@@ -29,9 +29,9 @@ export const getAccessToken = async () => {
   const tokenCheck = accessToken && (await checkToken(accessToken))
 
   if (!accessToken || tokenCheck.error) {
-    localStorage.removeItem("access_token")
+    await localStorage.removeItem("access_token")
     const searchParams = new URLSearchParams(window.location.search)
-    const code = searchParams.get("code")
+    const code = await searchParams.get("code")
     if (!code) {
       const response = await fetch( 
         "https://ncssdjauvj.execute-api.us-east-2.amazonaws.com/dev/api/get-auth-url"
