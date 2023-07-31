@@ -3,7 +3,7 @@ import CitySearch from './components/CitySearch'
 import EventList from './components/EventList'
 import NumberOfEvents from './components/NumberOfEvents';
 import { extractLocations, getEvents } from './api'
-import { InfoAlert, ErrorAlert } from './components/alert'
+import { InfoAlert, ErrorAlert, WarningAlert } from './components/alert'
 import './App.css';
 
 export default function App() {
@@ -13,8 +13,15 @@ export default function App() {
   const [currentCity, setCurrentCity] = useState("See all cities")
   const [infoAlert, setInfoAlert] = useState("")
   const [errorAlert, setErrorAlert] = useState("")
+  const [warningAlert, setWarningAlert] = useState("")
   
   useEffect(() => {
+    if (navigator.online){
+      <WarningAlert text="You are in offline mode"/>
+    }else{
+      <WarningAlert text=""/>
+    }
+
     fetchData()
   }, [currentCity, currentNOE])
 
