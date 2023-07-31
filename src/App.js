@@ -14,14 +14,15 @@ export default function App() {
   const [infoAlert, setInfoAlert] = useState("")
   const [errorAlert, setErrorAlert] = useState("")
   const [warningAlert, setWarningAlert] = useState("")
-  
-  useEffect(() => {
-    if (navigator.online){
-      <WarningAlert text="You are in offline mode"/>
-    }else{
-      <WarningAlert text=""/>
-    }
 
+  useEffect(() => {
+    let warntext
+    if (navigator.online) {
+      warntext = ""
+    } else {
+      warntext = "You are currently offline and looking at last stored data."
+    }
+    setWarningAlert(warntext)
     fetchData()
   }, [currentCity, currentNOE])
 
@@ -33,17 +34,18 @@ export default function App() {
     setEvents(filteredEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
   }
- 
-  
+
+
   return (
     <div className="App">
       <div className="alerts-container">
-        {infoAlert.length ? <InfoAlert text={infoAlert}/> : null}
-        {errorAlert.length ? <ErrorAlert text={errorAlert}/> : null}
+        {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
+        {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+        {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
       </div>
-      <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setInfoAlert={setInfoAlert}/>
-      <NumberOfEvents setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert}/>
-      <EventList events={events}/>
+      <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setInfoAlert={setInfoAlert} />
+      <NumberOfEvents setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert} />
+      <EventList events={events} />
     </div>
   );
 }
