@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
-const colors = ["#A653F5", "#8F8CF2", "#65B8BF", "#F96CFF", "#FA92FB"];
+const colors = ["#8F8CF2", "#EAA221", "#65B8BF", "#e642f5", "#1e7033"];
 const genres = ["React", "JavaScript", "Node", "jQuery", "AngularJS"];
 
 const EventGenresChart = ({ events }) => {
