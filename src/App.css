@@ -94,3 +94,14 @@ input[type="number"] {
   width: 250px;
   z-index: 1000;
 }
+
+.charts-container {
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+  .charts-container{
+    display: block;
+    float: none
+  }
+}
