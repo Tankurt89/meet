@@ -18,7 +18,7 @@ export default function App() {
   const [warningAlert, setWarningAlert] = useState("")
 
   useEffect(() => {
-    if (navigator.online) {
+    if (navigator.onLine) {
       setWarningAlert("")
     } else {
       setWarningAlert("You are in offline mode")
