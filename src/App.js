@@ -15,16 +15,14 @@ export default function App() {
   const [currentCity, setCurrentCity] = useState("See all cities")
   const [infoAlert, setInfoAlert] = useState("")
   const [errorAlert, setErrorAlert] = useState("")
-  // const [warningAlert, setWarningAlert] = useState("")
+  const [warningAlert, setWarningAlert] = useState("")
 
   useEffect(() => {
-    // let warntext
-    // if (navigator.online) {
-    //   warntext = ""
-    // } else {
-    //   warntext = "You are currently offline and looking at last stored data."
-    // }
-    // setWarningAlert(warntext)
+    if (navigator.online) {
+      setWarningAlert("")
+    } else {
+      setWarningAlert("You are in offline mode")
+    }
     fetchData()
   }, [currentCity, currentNOE])
 
@@ -43,7 +41,7 @@ export default function App() {
       <h1>Meet App</h1>
       <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
-        {/* {warningAlert.length ? <WarningAlert text={warningAlert} /> : null} */}
+        {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
       </div>
       <CitySearch 
